@@ -4,7 +4,7 @@ using Microsoft.Win32;
 
 namespace MaterialDesignThemes.Wpf;
 
-public partial class Theme : ITheme
+public partial class Theme
 {
     public static IBaseTheme Light { get; } = new MaterialDesignLightTheme();
     public static IBaseTheme Dark { get; } = new MaterialDesignDarkTheme();
@@ -37,7 +37,7 @@ public partial class Theme : ITheme
     public static Theme Create(IBaseTheme baseTheme, Color primary, Color accent)
     {
         if (baseTheme is null) throw new ArgumentNullException(nameof(baseTheme));
-        var theme = new Theme();
+        Theme theme = new();
 
         theme.SetBaseTheme(baseTheme);
         theme.SetPrimaryColor(primary);
@@ -56,8 +56,6 @@ public partial class Theme : ITheme
     public ColorPair PrimaryMid { get; set; }
     public ColorPair PrimaryDark { get; set; }
 
-    public Color ValidationError { get; set; }
-    public Color Background { get; set; }
     public Color Paper { get; set; }
     public Color CardBackground { get; set; }
     public Color ToolBarBackground { get; set; }

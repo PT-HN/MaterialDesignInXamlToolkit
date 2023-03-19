@@ -22,9 +22,9 @@
   <colors:StaticResource x:Key="MaterialDesignChipBackground" ResourceKey="MaterialDesign.Brush.Chip.Background" />
   <colors:StaticResource x:Key="MaterialDesignDataGridRowHoverBackground" ResourceKey="MaterialDesign.Brush.DataGrid.RowHoverBackground" />
   <colors:StaticResource x:Key="MaterialDesignBody" ResourceKey="MaterialDesign.Brush.Foreground" />
-  <colors:StaticResource x:Key="MaterialDesignBodyLight" ResourceKey="MaterialDesign.Brush.Foreground.Light" />
-  <colors:StaticResource x:Key="MaterialDesignCheckBoxOff" ResourceKey="MaterialDesign.Brush.Foreground.Light" />
-  <colors:StaticResource x:Key="MaterialDesignTextBoxBorder" ResourceKey="MaterialDesign.Brush.Foreground.Light" />
+  <colors:StaticResource x:Key="MaterialDesignBodyLight" ResourceKey="MaterialDesign.Brush.ForegroundLight" />
+  <colors:StaticResource x:Key="MaterialDesignCheckBoxOff" ResourceKey="MaterialDesign.Brush.ForegroundLight" />
+  <colors:StaticResource x:Key="MaterialDesignTextBoxBorder" ResourceKey="MaterialDesign.Brush.ForegroundLight" />
   <colors:StaticResource x:Key="MaterialDesignColumnHeader" ResourceKey="MaterialDesign.Brush.Header.Foreground" />
   <colors:StaticResource x:Key="MaterialDesignTextAreaBorder" ResourceKey="MaterialDesign.Brush.Header.Foreground" />
   <colors:StaticResource x:Key="MaterialDesignSnackbarBackground" ResourceKey="MaterialDesign.Brush.SnackBar.Background" />

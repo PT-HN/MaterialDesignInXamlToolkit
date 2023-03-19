@@ -9,7 +9,7 @@ public static class ThemeMixins
     internal static ColorPair ToPairedColor(this Hue hue)
         => new(hue.Color, hue.Foreground);
 
-    internal static void SetPalette(this ITheme theme, Palette palette)
+    internal static void SetPalette(this Theme theme, Palette palette)
     {
         List<Hue> allHues = palette.PrimarySwatch.PrimaryHues.ToList();
 
@@ -37,7 +37,7 @@ public static class ThemeMixins
         };
     }
 
-    public static BaseTheme GetBaseTheme(this ITheme theme)
+    public static BaseTheme GetBaseTheme(this Theme theme)
     {
         if (theme is null) throw new ArgumentNullException(nameof(theme));
 
@@ -45,14 +45,14 @@ public static class ThemeMixins
         return foreground == Colors.Black ? BaseTheme.Light : BaseTheme.Dark;
     }
 
-    public static ITheme AdjustColors(this ITheme theme)
+    public static Theme AdjustColors(this Theme theme)
     {
         theme.PrimaryMid = theme.PrimaryMid.Color.EnsureContrastRatio(theme.Background, 4.5f);
 
         return theme;
     }
 
-    public static void SetBaseTheme(this ITheme theme, IBaseTheme baseTheme)
+    public static void SetBaseTheme(this Theme theme, IBaseTheme baseTheme)
     {
         if (theme is null) throw new ArgumentNullException(nameof(theme));
         if (baseTheme is null) throw new ArgumentNullException(nameof(baseTheme));
@@ -87,7 +87,7 @@ public static class ThemeMixins
         theme.DataGridRowHoverBackground = baseTheme.MaterialDesignDataGridRowHoverBackground;
     }
 
-    public static void SetPrimaryColor(this ITheme theme, Color primaryColor)
+    public static void SetPrimaryColor(this Theme theme, Color primaryColor)
     {
         if (theme is null) throw new ArgumentNullException(nameof(theme));
 
@@ -96,7 +96,7 @@ public static class ThemeMixins
         theme.PrimaryDark = primaryColor.Darken();
     }
 
-    public static void SetSecondaryColor(this ITheme theme, Color accentColor)
+    public static void SetSecondaryColor(this Theme theme, Color accentColor)
     {
         if (theme is null) throw new ArgumentNullException(nameof(theme));
         theme.SecondaryLight = accentColor.Lighten();

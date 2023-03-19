@@ -26,7 +26,7 @@
         ]
     },
     {
-        "name": "MaterialDesign.Brush.Foreground.Light",
+        "name": "MaterialDesign.Brush.ForegroundLight",
         "themeValues": {
             "light": "Black500",
             "dark": "White500"
