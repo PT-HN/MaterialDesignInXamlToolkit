@@ -8,41 +8,41 @@ static partial class ResourceDictionaryExtensions
 {
     private static partial void LoadThemeColors(ResourceDictionary resourceDictionary, Theme theme)
     {
-        theme.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.Background, MaterialDesignBackground, MaterialDesignCardBackground, MaterialDesignPaper");
-        theme.Foreground = GetColor(resourceDictionary, "MaterialDesign.Brush.Foreground, MaterialDesignBody");
-        theme.ForegroundLight = GetColor(resourceDictionary, "MaterialDesign.Brush.ForegroundLight, MaterialDesignBodyLight, MaterialDesignCheckBoxOff, MaterialDesignTextBoxBorder");
-        theme.ValidationError = GetColor(resourceDictionary, "MaterialDesign.Brush.ValidationError, MaterialDesignValidationErrorBrush");
-        theme.Cards.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.Card.Background, MaterialDesignBackground, MaterialDesignCardBackground, MaterialDesignPaper");
-        theme.Buttons.FlatClick = GetColor(resourceDictionary, "MaterialDesign.Brush.Button.FlatClick, MaterialDesignFlatButtonClick");
-        theme.Buttons.Ripple = GetColor(resourceDictionary, "MaterialDesign.Brush.Button.Ripple, MaterialDesignFlatButtonRipple, MaterialDesignSnackbarRipple");
-        theme.Buttons.FlatRipple = GetColor(resourceDictionary, "MaterialDesign.Brush.Button.FlatRipple, MaterialDesignFlatButtonRipple, MaterialDesignSnackbarRipple");
-        theme.SnackBars.Ripple = GetColor(resourceDictionary, "MaterialDesign.Brush.SnackBar.Ripple, MaterialDesignFlatButtonRipple, MaterialDesignSnackbarRipple");
-        theme.SnackBars.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.SnackBar.Background, MaterialDesignSnackbarBackground");
-        theme.SnackBars.MouseOver = GetColor(resourceDictionary, "MaterialDesign.Brush.SnackBar.MouseOver, MaterialDesignSnackbarMouseOver");
-        theme.CheckBoxes.Disabled = GetColor(resourceDictionary, "MaterialDesign.Brush.CheckBox.Disabled, MaterialDesignCheckBoxDisabled");
-        theme.CheckBoxes.Off = GetColor(resourceDictionary, "MaterialDesign.Brush.CheckBox.Off, MaterialDesignBodyLight, MaterialDesignCheckBoxOff, MaterialDesignTextBoxBorder");
-        theme.Chips.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.Chip.Background, MaterialDesignChipBackground");
+        theme.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.Background", "MaterialDesignBackground", "MaterialDesignCardBackground", "MaterialDesignPaper");
+        theme.Foreground = GetColor(resourceDictionary, "MaterialDesign.Brush.Foreground", "MaterialDesignBody");
+        theme.ForegroundLight = GetColor(resourceDictionary, "MaterialDesign.Brush.ForegroundLight", "MaterialDesignBodyLight", "MaterialDesignCheckBoxOff", "MaterialDesignTextBoxBorder");
+        theme.ValidationError = GetColor(resourceDictionary, "MaterialDesign.Brush.ValidationError", "MaterialDesignValidationErrorBrush");
+        theme.Cards.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.Card.Background", "MaterialDesignBackground", "MaterialDesignCardBackground", "MaterialDesignPaper");
+        theme.Buttons.FlatClick = GetColor(resourceDictionary, "MaterialDesign.Brush.Button.FlatClick", "MaterialDesignFlatButtonClick");
+        theme.Buttons.Ripple = GetColor(resourceDictionary, "MaterialDesign.Brush.Button.Ripple", "MaterialDesignFlatButtonRipple", "MaterialDesignSnackbarRipple");
+        theme.Buttons.FlatRipple = GetColor(resourceDictionary, "MaterialDesign.Brush.Button.FlatRipple", "MaterialDesignFlatButtonRipple", "MaterialDesignSnackbarRipple");
+        theme.SnackBars.Ripple = GetColor(resourceDictionary, "MaterialDesign.Brush.SnackBar.Ripple", "MaterialDesignFlatButtonRipple", "MaterialDesignSnackbarRipple");
+        theme.SnackBars.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.SnackBar.Background", "MaterialDesignSnackbarBackground");
+        theme.SnackBars.MouseOver = GetColor(resourceDictionary, "MaterialDesign.Brush.SnackBar.MouseOver", "MaterialDesignSnackbarMouseOver");
+        theme.CheckBoxes.Disabled = GetColor(resourceDictionary, "MaterialDesign.Brush.CheckBox.Disabled", "MaterialDesignCheckBoxDisabled");
+        theme.CheckBoxes.Off = GetColor(resourceDictionary, "MaterialDesign.Brush.CheckBox.Off", "MaterialDesignBodyLight", "MaterialDesignCheckBoxOff", "MaterialDesignTextBoxBorder");
+        theme.Chips.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.Chip.Background", "MaterialDesignChipBackground");
         theme.DataGrids.ButtonPressed = GetColor(resourceDictionary, "MaterialDesign.Brush.DataGrid.ButtonPressed");
         theme.DataGrids.ComboBoxSelected = GetColor(resourceDictionary, "MaterialDesign.Brush.DataGrid.ComboBoxSelected");
-        theme.DataGrids.RowHoverBackground = GetColor(resourceDictionary, "MaterialDesign.Brush.DataGrid.RowHoverBackground, MaterialDesignDataGridRowHoverBackground");
+        theme.DataGrids.RowHoverBackground = GetColor(resourceDictionary, "MaterialDesign.Brush.DataGrid.RowHoverBackground", "MaterialDesignDataGridRowHoverBackground");
         theme.DataGrids.Selected = GetColor(resourceDictionary, "MaterialDesign.Brush.DataGrid.Selected");
-        theme.DataGrids.ColumnHeaderForeground = GetColor(resourceDictionary, "MaterialDesign.Brush.DataGrid.ColumnHeaderForeground, MaterialDesignColumnHeader, MaterialDesignTextAreaBorder");
-        theme.TextBoxes.Border = GetColor(resourceDictionary, "MaterialDesign.Brush.TextBox.Border, MaterialDesignBodyLight, MaterialDesignCheckBoxOff, MaterialDesignTextBoxBorder");
-        theme.TextBoxes.OutlineBorder = GetColor(resourceDictionary, "MaterialDesign.Brush.TextBox.OutlineBorder, MaterialDesignColumnHeader, MaterialDesignTextAreaBorder");
-        theme.TextBoxes.DisabledBackground = GetColor(resourceDictionary, "MaterialDesign.Brush.TextBox.DisabledBackground, MaterialDesignTextFieldBoxDisabledBackground");
-        theme.TextBoxes.FilledBackground = GetColor(resourceDictionary, "MaterialDesign.Brush.TextBox.FilledBackground, MaterialDesignTextFieldBoxBackground");
-        theme.TextBoxes.HoverBackground = GetColor(resourceDictionary, "MaterialDesign.Brush.TextBox.HoverBackground, MaterialDesignTextFieldBoxHoverBackground, MaterialDesignDivider");
-        theme.TextBoxes.OutlineInactiveBorder = GetColor(resourceDictionary, "MaterialDesign.Brush.TextBox.OutlineInactiveBorder, MaterialDesignTextAreaInactiveBorder");
+        theme.DataGrids.ColumnHeaderForeground = GetColor(resourceDictionary, "MaterialDesign.Brush.DataGrid.ColumnHeaderForeground", "MaterialDesignColumnHeader", "MaterialDesignTextAreaBorder");
+        theme.TextBoxes.Border = GetColor(resourceDictionary, "MaterialDesign.Brush.TextBox.Border", "MaterialDesignBodyLight", "MaterialDesignCheckBoxOff", "MaterialDesignTextBoxBorder");
+        theme.TextBoxes.OutlineBorder = GetColor(resourceDictionary, "MaterialDesign.Brush.TextBox.OutlineBorder", "MaterialDesignColumnHeader", "MaterialDesignTextAreaBorder");
+        theme.TextBoxes.DisabledBackground = GetColor(resourceDictionary, "MaterialDesign.Brush.TextBox.DisabledBackground", "MaterialDesignTextFieldBoxDisabledBackground");
+        theme.TextBoxes.FilledBackground = GetColor(resourceDictionary, "MaterialDesign.Brush.TextBox.FilledBackground", "MaterialDesignTextFieldBoxBackground");
+        theme.TextBoxes.HoverBackground = GetColor(resourceDictionary, "MaterialDesign.Brush.TextBox.HoverBackground", "MaterialDesignTextFieldBoxHoverBackground", "MaterialDesignDivider");
+        theme.TextBoxes.OutlineInactiveBorder = GetColor(resourceDictionary, "MaterialDesign.Brush.TextBox.OutlineInactiveBorder", "MaterialDesignTextAreaInactiveBorder");
         theme.GridSplitters.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.GridSplitter.Background");
-        theme.Headers.Foreground = GetColor(resourceDictionary, "MaterialDesign.Brush.Header.Foreground, MaterialDesignColumnHeader, MaterialDesignTextAreaBorder");
+        theme.Headers.Foreground = GetColor(resourceDictionary, "MaterialDesign.Brush.Header.Foreground", "MaterialDesignColumnHeader", "MaterialDesignTextAreaBorder");
         theme.ListViews.Selected = GetColor(resourceDictionary, "MaterialDesign.Brush.ListView.Selected");
         theme.ScrollBars.Foreground = GetColor(resourceDictionary, "MaterialDesign.Brush.ScrollBar.Foreground");
         theme.ScrollBars.RepeatButtonBackground = GetColor(resourceDictionary, "MaterialDesign.Brush.ScrollBar.RepeatButtonBackground");
         theme.Separators.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.Separator.Background");
-        theme.ToolBars.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.ToolBar.Background, MaterialDesignToolBarBackground");
-        theme.ToolBars.Items.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.ToolBar.Item.Background, MaterialDesignToolBackground");
-        theme.ToolBars.Items.Foreground = GetColor(resourceDictionary, "MaterialDesign.Brush.ToolBar.Item.Foreground, MaterialDesignToolForeground");
-        theme.ToolTips.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.ToolTip.Background, MaterialDesignToolTipBackground");
+        theme.ToolBars.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.ToolBar.Background", "MaterialDesignToolBarBackground");
+        theme.ToolBars.Items.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.ToolBar.Item.Background", "MaterialDesignToolBackground");
+        theme.ToolBars.Items.Foreground = GetColor(resourceDictionary, "MaterialDesign.Brush.ToolBar.Item.Foreground", "MaterialDesignToolForeground");
+        theme.ToolTips.Background = GetColor(resourceDictionary, "MaterialDesign.Brush.ToolTip.Background", "MaterialDesignToolTipBackground");
     }
 
     private static partial void ApplyThemeColors(ResourceDictionary resourceDictionary, Theme theme)

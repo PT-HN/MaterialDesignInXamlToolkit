@@ -1,3 +1,5 @@
 <Project>
+  <Target Name="GenerateFiles" Inputs="@(GenerateInputs)" Outputs="@(GeneratedOutputs)">
     
+  </Target>
 </Project>

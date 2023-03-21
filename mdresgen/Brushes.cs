@@ -19,6 +19,7 @@ public static partial class Brushes
         """;
     private const string IgnoredBrushName = "MaterialDesign.Brush.Ignored";
     private const int CSharpIndentSize = 4;
+    private const int XamlIndentSize = 2;
 
     public static async Task GenerateBrushesAsync()
     {
@@ -39,6 +40,7 @@ public static partial class Brushes
         GenerateObsoleteBrushesDictionary(filteredBrushes, repoRoot);
         GenerateThemeClass(alternateBrushTree, repoRoot);
         GenerateResouceDictionaryExtensions(alternateBrushTree, repoRoot);
+        GenerateThemeBrushTests(alternateBrushTree, repoRoot);
 
         static IEnumerable<Brush> GetAllAlternateBrushes(Brush x)
         {
@@ -162,7 +164,7 @@ public static partial class Brushes
             }
 
             foreach (TreeItem<Brush> child in treeItem.Children)
-            {   
+            {
                 writer.WriteLine($"{indent}    public {child.Name} {child.Name.Pluralize()} {{ get; set; }} = new();");
                 writer.WriteLine();
             }
@@ -215,10 +217,10 @@ public static partial class Brushes
         static void LoadThemeColors(TreeItem<Brush> treeItem, StreamWriter writer, int indentLevel, string propertyPrefix)
         {
             string indent = new(' ', indentLevel * CSharpIndentSize);
-            
+
             foreach (Brush brush in treeItem.Values)
             {
-                string keys = string.Join(", ", GetResourceKeys());
+                string keys = string.Join("\", \"", GetResourceKeys());
                 writer.WriteLine($"{indent}{propertyPrefix}{brush.PropertyName} = GetColor(resourceDictionary, \"{keys}\");");
 
                 IEnumerable<string> GetResourceKeys()
@@ -227,18 +229,18 @@ public static partial class Brushes
                     {
                         yield return brush.Name;
                     }
-                    foreach(string key in brush.AlternateKeys ?? Enumerable.Empty<string>())
+                    foreach (string key in brush.AlternateKeys ?? Enumerable.Empty<string>())
                     {
                         yield return key;
                     }
-                    foreach(string key in brush.ObsoleteKeys ?? Enumerable.Empty<string>())
+                    foreach (string key in brush.ObsoleteKeys ?? Enumerable.Empty<string>())
                     {
                         yield return key;
                     }
                 }
             }
 
-            foreach(TreeItem<Brush> child in treeItem.Children)
+            foreach (TreeItem<Brush> child in treeItem.Children)
             {
                 LoadThemeColors(child, writer, indentLevel, $"{propertyPrefix}{child.Name.Pluralize()}.");
             }
@@ -250,11 +252,11 @@ public static partial class Brushes
 
             foreach (Brush brush in treeItem.Values)
             {
-                foreach(var key in GetResourceKeys())
+                foreach (var key in GetResourceKeys())
                 {
                     writer.WriteLine($"{indent}SetSolidColorBrush(resourceDictionary, \"{key}\", {propertyPrefix}{brush.PropertyName});");
                 }
-                
+
                 IEnumerable<string> GetResourceKeys()
                 {
                     if (!string.IsNullOrWhiteSpace(brush.Name))
@@ -280,6 +282,77 @@ public static partial class Brushes
         }
 
     }
+
+    private static void GenerateThemeBrushTests(TreeItem<Brush> brushes, DirectoryInfo repoRoot)
+    {
+        string indent = new(' ', CSharpIndentSize);
+        string xamlIndent = new(' ', XamlIndentSize);
+        using var writer = new StreamWriter(Path.Combine(repoRoot.FullName, "MaterialDesignThemes.UITests", "WPF", "Theme", "ThemeTests.g.cs"));
+        writer.WriteLine("""
+                using System.Windows.Media;
+
+                namespace MaterialDesignThemes.UITests.WPF.Theme;
+
+                partial class ThemeTests
+                {
+                """);
+        WriteGetXamlWrapPanel();
+
+        WriteAssertAllThemeBrushesSet();
+
+        writer.WriteLine("}");
+
+        void WriteGetXamlWrapPanel()
+        {
+            writer.WriteLine($$""""
+                {{indent}}private partial string GetXamlWrapPanel()
+                {{indent}}{
+                {{indent}}{{indent}}return """
+                {{indent}}{{indent}}<WrapPanel>
+                {{indent}}{{indent}}{{xamlIndent}}<WrapPanel.Resources>
+                {{indent}}{{indent}}{{xamlIndent}}{{xamlIndent}}<Style TargetType="TextBlock">
+                {{indent}}{{indent}}{{xamlIndent}}{{xamlIndent}}{{xamlIndent}}<Setter Property="Height" Value="50"/>
+                {{indent}}{{indent}}{{xamlIndent}}{{xamlIndent}}{{xamlIndent}}<Setter Property="Width" Value="50"/>
+                {{indent}}{{indent}}{{xamlIndent}}{{xamlIndent}}</Style>
+                {{indent}}{{indent}}{{xamlIndent}}</WrapPanel.Resources>
+                """");
+            foreach (Brush brush in brushes)
+            {
+                writer.WriteLine($$"""
+                {{indent}}{{indent}}{{xamlIndent}}<TextBlock Text="{{brush.NameWithoutPrefix}}" Background="{StaticResource {{brush.Name}}}" />
+                """);
+            }
+            writer.WriteLine($$""""
+                {{indent}}{{indent}}</WrapPanel>
+                {{indent}}{{indent}}""";
+                {{indent}}}
+                """");
+        }
+
+        void WriteAssertAllThemeBrushesSet()
+        {
+            writer.WriteLine($$"""
+                {{indent}}private partial async Task AssertAllThemeBrushesSet(IVisualElement<WrapPanel> panel)
+                {{indent}}{
+                """);
+            foreach (Brush brush in brushes)
+            {
+                writer.WriteLine($$"""
+                    {{indent}}{{indent}}{
+                    {{indent}}{{indent}}{{indent}}IResource resource = await App.GetResource("{{brush.Name}}");
+                    {{indent}}{{indent}}{{indent}}SolidColorBrush? brush = resource.GetAs<SolidColorBrush>();
+                    {{indent}}{{indent}}{{indent}}IVisualElement<TextBlock> textBlock = await panel.GetElement<TextBlock>("[Text=\"{{brush.NameWithoutPrefix}}\"]");
+                    {{indent}}{{indent}}{{indent}}Color? textBlockBackground = await textBlock.GetBackgroundColor();
+                    {{indent}}{{indent}}{{indent}}Assert.Equal(brush?.Color, textBlockBackground);
+                    {{indent}}{{indent}}}
+                    """);
+            }
+            writer.WriteLine($$"""
+                {{indent}}}
+                """);
+        }
+    }
+
 
     private static DirectoryInfo? GetRepoRoot()
     {
